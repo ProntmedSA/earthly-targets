@@ -2,6 +2,7 @@ VERSION 0.6
 ARG GITVERSION_DOCKER_TAG=5.8.0-alpine.3.14-6.0-amd64
 
 CSHARP_COPY_RESTORE:
+	COMMAND
     COPY . .
     RUN find . -name "*.sln" -prune -o \! -type d \! -name \*.csproj \! -name \*.csproj -exec rm -f '{}' + \
     && find . -depth -type d -empty -exec rmdir '{}' \;
