@@ -4,7 +4,7 @@ ARG GITVERSION_DOCKER_TAG=5.8.0-alpine.3.14-6.0-amd64
 CSHARP_COPY_RESTORE:
 	COMMAND
     COPY . .
-    RUN find . -name "*.sln" -prune -o \! -type d \! -name \*.csproj \! -name "paket.dependencies" \! -name "paket.lock" \! -name ".config/dotnet-tools.json" -exec rm -f '{}' + \
+    RUN find . -name "*.sln" -prune -o \! -type d \! -name \*.csproj \! -name "paket.dependencies" \! -name "paket.lock" \! -wholename ".config/dotnet-tools.json" -exec rm -f '{}' + \
     && find . -depth -type d -empty -exec rmdir '{}' \;
 
 gitversion:
